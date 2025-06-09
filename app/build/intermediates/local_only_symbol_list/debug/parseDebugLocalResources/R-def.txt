@@ -5,7 +5,8 @@ color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_notification
-id lock_text
+id lock_screen_layout
+id lock_screen_todolist
 id main
 layout activity_main
 layout lock_screen

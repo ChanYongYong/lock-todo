@@ -47,10 +47,8 @@ public class MainActivity extends AppCompatActivity {
             startService(serviceIntent);
         }
 
-        // 앱 실행 시 바로 LockScreenActivity 실행
-        Intent lockIntent = new Intent(this, LockScreenActivity.class);
-        lockIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(lockIntent);
+        // 앱 실행 시 바로 LockScreenActivity 실행 코드 제거
+        // 이제 MainActivity가 보이게 됩니다
     }
 }
 
