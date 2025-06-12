@@ -34,7 +34,10 @@ public class LockScreenService extends Service {
                 .setContentTitle("LockScreen Service")
                 .setContentText("잠금화면 서비스가 실행 중입니다.")
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE) // 안드로이드 14 대응
+                .setOngoing(true) // 알림 지속
                 .build();
+
         startForeground(1, notification);
         return START_STICKY;
     }
@@ -56,11 +59,10 @@ public class LockScreenService extends Service {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
                     "LockScreen Service Channel",
-                    NotificationManager.IMPORTANCE_DEFAULT
+                    NotificationManager.IMPORTANCE_HIGH
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
         }
     }
 }
-

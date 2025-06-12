@@ -51,4 +51,3 @@ public class MainActivity extends AppCompatActivity {
         // 이제 MainActivity가 보이게 됩니다
     }
 }
-

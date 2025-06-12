@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#333333">
+
+    <!-- 메모 항목 1 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:background="#444444">
+
+        <!-- 날짜 설정 버튼 -->
+        <Button
+            android:id="@+id/dateButton1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="날짜"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+
+        <!-- 메모 입력 -->
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:hint="메모 1을 입력하세요"
+            android:background="@null" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/completeButton1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="완료"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+    </LinearLayout>
+
+    <!-- 메모 항목 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:background="#444444">
+
+        <!-- 날짜 설정 버튼 -->
+        <Button
+            android:id="@+id/dateButton2"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="날짜"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+
+        <!-- 메모 입력 -->
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:hint="메모 2를 입력하세요"
+            android:background="@null" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/completeButton2"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="완료"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+    </LinearLayout>
+
+    <!-- 메모 항목 3 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:background="#444444">
+
+        <!-- 날짜 설정 버튼 -->
+        <Button
+            android:id="@+id/dateButton3"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="날짜"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+
+        <!-- 메모 입력 -->
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:hint="메모 3을 입력하세요"
+            android:background="@null" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/completeButton3"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="완료"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+    </LinearLayout>
+
+    <!-- 메모 항목 4 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:background="#444444">
+
+        <!-- 날짜 설정 버튼 -->
+        <Button
+            android:id="@+id/dateButton4"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="날짜"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+
+        <!-- 메모 입력 -->
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:hint="메모 4를 입력하세요"
+            android:background="@null" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/completeButton4"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="완료"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+    </LinearLayout>
+
+    <!-- 메모 항목 5 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="#444444">
+
+        <!-- 날짜 설정 버튼 -->
+        <Button
+            android:id="@+id/dateButton5"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="날짜"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+
+        <!-- 메모 입력 -->
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:hint="메모 5를 입력하세요"
+            android:background="@null" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/completeButton5"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="완료"
+            android:textSize="11sp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:backgroundTint="#555555" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,8 +7,14 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.todolist3.adapter.EditTextPagerAdapter;
 
 public class LockScreenActivity extends Activity {
+    private ViewPager2 viewPager;
+    private EditTextPagerAdapter adapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,8 +23,23 @@ public class LockScreenActivity extends Activity {
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-        // 아주 간단한 레이아웃
+
         setContentView(R.layout.lock_screen);
+
+        // ViewPager2 초기화
+        viewPager = findViewById(R.id.lock_screen_viewpager);
+
+        // 어댑터 설정 (페이지 수는 원하는대로 조정)
+        adapter = new EditTextPagerAdapter(3); // 3페이지로 설정
+        viewPager.setAdapter(adapter);
+
+        // 페이지 내용 변경 감지
+        adapter.setOnPageContentChangeListener(new EditTextPagerAdapter.OnPageContentChangeListener() {
+            @Override
+            public void onPageContentChanged(int position, boolean isEmpty) {
+                // 필요한 경우 페이지 내용 변경 시 로직 추가
+            }
+        });
 
         // 잠금화면을 터치하면 액티비티만 종료하고 홈 화면으로 이동
         findViewById(R.id.lock_screen_layout).setOnClickListener(new View.OnClickListener() {
@@ -36,15 +57,5 @@ public class LockScreenActivity extends Activity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        // 뒤로 가기 버튼을 눌렀을 때도 홈 화면으로 이동
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory(Intent.CATEGORY_HOME);
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(homeIntent);
 
-        // 액티비티 종료
-        finish();
-    }
 }

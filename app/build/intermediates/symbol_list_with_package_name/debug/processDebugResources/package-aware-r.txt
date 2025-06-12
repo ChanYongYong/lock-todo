@@ -3233,6 +3233,11 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id completeButton1
+id completeButton2
+id completeButton3
+id completeButton4
+id completeButton5
 id compress
 id confirm_button
 id constraint
@@ -3249,6 +3254,11 @@ id currentState
 id custom
 id customPanel
 id cut
+id dateButton1
+id dateButton2
+id dateButton3
+id dateButton4
+id dateButton5
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3283,6 +3293,11 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editText1
+id editText2
+id editText3
+id editText4
+id editText5
 id edit_query
 id edit_text_id
 id elastic
@@ -3355,7 +3370,7 @@ id linear
 id listMode
 id list_item
 id lock_screen_layout
-id lock_screen_todolist
+id lock_screen_viewpager
 id m3_side_sheet
 id main
 id marquee
@@ -3809,6 +3824,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout page_edittext
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
