@@ -30,7 +30,7 @@ public class LockScreenActivity extends Activity {
         viewPager = findViewById(R.id.lock_screen_viewpager);
 
         // 어댑터 설정 (페이지 수는 원하는대로 조정)
-        adapter = new EditTextPagerAdapter(3); // 3페이지로 설정
+        adapter = new EditTextPagerAdapter(1); // 3페이지로 설정
         viewPager.setAdapter(adapter);
 
         // 페이지 내용 변경 감지
