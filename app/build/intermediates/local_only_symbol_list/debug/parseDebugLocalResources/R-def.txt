@@ -5,6 +5,9 @@ color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_notification
+id btn_change_pattern
+id btn_lock_cancel
+id btn_view_tasks
 id completeButton1
 id completeButton2
 id completeButton3
@@ -20,6 +23,7 @@ id editText2
 id editText3
 id editText4
 id editText5
+id lock_off
 id lock_screen_layout
 id lock_screen_viewpager
 id main

@@ -35,7 +35,7 @@
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:hint="메모 1을 입력하세요"
+            android:hint="할일 1을 입력하세요"
             android:background="@null" />
 
         <!-- 완료 버튼 -->
@@ -43,7 +43,7 @@
             android:id="@+id/completeButton1"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="완료"
+            android:text="저장"
             android:textSize="11sp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -79,7 +79,7 @@
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:hint="메모 2를 입력하세요"
+            android:hint="할일 2를 입력하세요"
             android:background="@null" />
 
         <!-- 완료 버튼 -->
@@ -87,7 +87,7 @@
             android:id="@+id/completeButton2"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="완료"
+            android:text="저장"
             android:textSize="11sp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -123,7 +123,7 @@
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:hint="메모 3을 입력하세요"
+            android:hint="할일 3을 입력하세요"
             android:background="@null" />
 
         <!-- 완료 버튼 -->
@@ -131,7 +131,7 @@
             android:id="@+id/completeButton3"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="완료"
+            android:text="저장"
             android:textSize="11sp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -167,7 +167,7 @@
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:hint="메모 4를 입력하세요"
+            android:hint="할일 4를 입력하세요"
             android:background="@null" />
 
         <!-- 완료 버튼 -->
@@ -175,7 +175,7 @@
             android:id="@+id/completeButton4"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="완료"
+            android:text="저장"
             android:textSize="11sp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -210,7 +210,7 @@
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
-            android:hint="메모 5를 입력하세요"
+            android:hint="할일 5를 입력하세요"
             android:background="@null" />
 
         <!-- 완료 버튼 -->
@@ -218,7 +218,7 @@
             android:id="@+id/completeButton5"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="완료"
+            android:text="저장"
             android:textSize="11sp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
