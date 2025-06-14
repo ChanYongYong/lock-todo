@@ -27,7 +27,11 @@ id lock_off
 id lock_screen_layout
 id lock_screen_viewpager
 id main
+id password_input
+id pattern_status_text
+id pin_input
 layout activity_main
+layout dialog_password
 layout lock_screen
 layout page_edittext
 mipmap ic_launcher

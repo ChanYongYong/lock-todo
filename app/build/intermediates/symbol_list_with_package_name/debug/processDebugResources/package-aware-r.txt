@@ -3480,12 +3480,15 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id password_input
 id password_toggle
 id path
 id pathRelative
+id pattern_status_text
 id peekHeight
 id percent
 id pin
+id pin_input
 id position
 id postLayout
 id pressed
@@ -3768,6 +3771,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_password
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout lock_screen

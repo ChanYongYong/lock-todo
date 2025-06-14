@@ -3,8 +3,15 @@ package com.example.todolist3;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -12,6 +19,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.todolist3.adapter.EditTextPagerAdapter;
+import com.example.todolist3.db.PasswordRepository;
 import com.example.todolist3.db.TodoRepository;
 
 import java.util.List;
@@ -19,6 +27,9 @@ import java.util.List;
 public class LockScreenActivity extends Activity implements EditTextPagerAdapter.OnPageContentChangeListener {
     private ViewPager2 viewPager;
     private EditTextPagerAdapter adapter;
+    private PasswordRepository passwordRepository;
+    private EditText pinInput;
+    private Button lockOffButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,26 +44,67 @@ public class LockScreenActivity extends Activity implements EditTextPagerAdapter
 
         // 네비게이션 바 숨기기
         hideSystemUI();
+
+        // 비밀번호 저장소 초기화
+        passwordRepository = new PasswordRepository(this);
+        // UI 요소 참조
+        pinInput = findViewById(R.id.pin_input);
+        lockOffButton = findViewById(R.id.lock_off);
+
         // ViewPager2, repository 초기화
         viewPager = findViewById(R.id.lock_screen_viewpager);
 
         // 어댑터 설정 (페이지 수는 원하는대로 조정)
         refreshTaskList();
+        // 비밀번호 입력 감지
+        pinInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // 4자리 입력 시 자동으로 검증
+                if (s.length() == 4) {
+                    verifyPassword(s.toString());
+                }
+            }
+        });
 
         findViewById(R.id.lock_off).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-                homeIntent.addCategory(Intent.CATEGORY_HOME);
-                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(homeIntent);
-
-                // 액티비티 종료
-                finish();
+                unlockScreen();
             }
         });
     }
 
+    private void verifyPassword(String inputPassword) {
+        if (!passwordRepository.hasPassword()) {
+            // 비밀번호가 설정되어 있지 않다면 그냥 잠금 해제
+            unlockScreen();
+            return;
+        }
+
+        if (passwordRepository.verifyPassword(inputPassword)) {
+            // 비밀번호 일치 - 잠금 해제
+            unlockScreen();
+        } else {
+            // 비밀번호 불일치
+            Toast.makeText(LockScreenActivity.this,
+                    "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    // 잠금 해제 및 액티비티 종료
+    private void unlockScreen() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(homeIntent);
+        finish();
+    }
     // 3. 시스템 UI(상태바, 네비게이션 바) 숨기기
     private void hideSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);

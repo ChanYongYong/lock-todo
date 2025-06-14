@@ -1,9 +1,16 @@
 package com.example.todolist3;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +19,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.todolist3.db.PasswordRepository;
+
 public class MainActivity extends AppCompatActivity {
+    private PasswordRepository passwordRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +57,100 @@ public class MainActivity extends AppCompatActivity {
             startService(serviceIntent);
         }
 
-        // 앱 실행 시 바로 LockScreenActivity 실행 코드 제거
-        // 이제 MainActivity가 보이게 됩니다
+        // 비밀번호 저장소 초기화
+        passwordRepository = new PasswordRepository(this);
+
+        // 버튼 리스너 설정
+        Button btnChangePattern = findViewById(R.id.btn_change_pattern);
+        // 비밀번호 설정 버튼
+        btnChangePattern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (passwordRepository.hasPassword()) {
+                    // 기존 비밀번호가 있으면 확인 후 변경
+                    verifyPasswordThenChange();
+                } else {
+                    // 비밀번호가 없으면 새로 생성
+                    showNewPasswordDialog();
+                }
+            }
+        });
     }
+
+    // 기존 비밀번호 확인 후 변경하는 대화상자
+    private void verifyPasswordThenChange() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_password, null);
+
+        final EditText passwordInput = dialogView.findViewById(R.id.password_input);
+
+        builder.setView(dialogView)
+                .setTitle("현재 비밀번호 입력")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String inputPassword = passwordInput.getText().toString();
+
+                        if (passwordRepository.verifyPassword(inputPassword)) {
+                            showNewPasswordDialog();
+                        } else {
+                            Toast.makeText(MainActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    // 새 비밀번호 입력 대화상자
+    private void showNewPasswordDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_password, null);
+
+        final EditText passwordInput = dialogView.findViewById(R.id.password_input);
+
+        builder.setView(dialogView)
+                .setTitle("새 비밀번호 입력 (4자리)")
+                .setPositiveButton("저장", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String newPassword = passwordInput.getText().toString();
+
+                        if (newPassword.length() == 4) {
+                            long result = passwordRepository.setPassword(newPassword);
+                            if (result != -1) {
+                                Toast.makeText(MainActivity.this,
+                                        "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(MainActivity.this,
+                                        "비밀번호 설정에 실패했습니다", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this,
+                                    "비밀번호는 4자리여야 합니다", Toast.LENGTH_SHORT).show();
+                            showNewPasswordDialog(); // 다시 대화상자 표시
+                        }
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
 }
