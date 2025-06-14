@@ -20,14 +20,14 @@
         android:id="@+id/btn_lock_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="잠금 해제">
+        android:text="잠금화면 표시/해제">
     </Button>
 
     <Button
         android:id="@+id/btn_change_pattern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="패턴 변경">
+        android:text="비밀번호 설정">
     </Button>
 
 </LinearLayout>

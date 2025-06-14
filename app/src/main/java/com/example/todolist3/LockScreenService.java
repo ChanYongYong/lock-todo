@@ -16,6 +16,8 @@ import androidx.core.app.NotificationCompat;
 public class LockScreenService extends Service {
     private static final String CHANNEL_ID = "LockScreenServiceChannel";
     private ScreenReceiver screenReceiver;
+    // 정적 필드로 잠금화면 활성화 상태 관리
+    public static boolean isLockScreenActive = false;
 
     @Override
     public void onCreate() {
@@ -39,6 +41,7 @@ public class LockScreenService extends Service {
                 .build();
 
         startForeground(1, notification);
+        isLockScreenActive = true;
         return START_STICKY;
     }
 
@@ -46,6 +49,7 @@ public class LockScreenService extends Service {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(screenReceiver);
+        isLockScreenActive = false;
     }
 
     @Nullable

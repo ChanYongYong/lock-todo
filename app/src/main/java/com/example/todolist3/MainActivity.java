@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        // 비밀번호 저장소 초기화
+        passwordRepository = new PasswordRepository(this);
         // Android 13 이상에서 알림 권한 요청
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
@@ -56,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             startService(serviceIntent);
         }
+        // 앱이 처음 실행되어 비밀번호가 설정되어 있지 않다면 비밀번호 설정 다이얼로그 표시
+        if (!passwordRepository.hasPassword()) {
+            showNewPasswordDialog();
+        }
 
-        // 비밀번호 저장소 초기화
-        passwordRepository = new PasswordRepository(this);
 
         // 버튼 리스너 설정
         Button btnChangePattern = findViewById(R.id.btn_change_pattern);
@@ -75,6 +78,44 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // 잠금화면 표시/해제 버튼 설정
+        Button btnLockCancel = findViewById(R.id.btn_lock_cancel);
+        updateLockToggleButtonText(btnLockCancel);
+        btnLockCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleLockScreenService();
+                updateLockToggleButtonText((Button) v);
+            }
+        });
+
+    }
+    // MainActivity.java의 toggleLockScreenService() 메서드
+    private void toggleLockScreenService() {
+        Intent serviceIntent = new Intent(this, LockScreenService.class);
+
+        if (LockScreenService.isLockScreenActive) {
+            // 서비스 중지
+            stopService(serviceIntent);
+            Toast.makeText(this, "잠금화면이 해제되었습니다", Toast.LENGTH_SHORT).show();
+        } else {
+            // 서비스 시작
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(serviceIntent);
+            } else {
+                startService(serviceIntent);
+            }
+            Toast.makeText(this, "잠금화면이 설정되었습니다", Toast.LENGTH_SHORT).show();
+        }
+    }
+    // 버튼 텍스트 업데이트
+    private void updateLockToggleButtonText(Button button) {
+        if (LockScreenService.isLockScreenActive) {
+            button.setText("잠금화면 해제");
+        } else {
+            button.setText("잠금화면 표시");
+        }
     }
 
     // 기존 비밀번호 확인 후 변경하는 대화상자

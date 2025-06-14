@@ -5,29 +5,40 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#222"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_view_tasks"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="할일 목록 조회">
-    </Button>
+        android:text="ToDoList 잠금 설정"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="48dp"/>
 
     <Button
         android:id="@+id/btn_lock_cancel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="잠금 해제">
-    </Button>
+        android:text="잠금화면 표시"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:backgroundTint="#444"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btn_change_pattern"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="비밀번호 설정">
-    </Button>
+        android:text="비밀번호 설정"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:backgroundTint="#444"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>
